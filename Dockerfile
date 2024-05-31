@@ -13,7 +13,7 @@ CMD ["npm", "run", "start:ci"]
 FROM base as dev
 ENV NODE_ENV=development
 RUN npm install
+COPY . /
 RUN npx prisma generate --schema prisma/schema.prisma
 RUN npx dotenv -e $NODE_ENV -- npm run migrate
-COPY . /
 CMD ["npm", "run", "start:dev"]
